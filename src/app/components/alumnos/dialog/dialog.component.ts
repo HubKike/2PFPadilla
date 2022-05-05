@@ -12,8 +12,8 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DialogComponent implements OnInit {
 
-  freshnessList: string[] = ["Brand new", "Second Hand", "Refurbishead"];
-  productForm!: FormGroup;
+  listaGeneros: string[] = ["M", "F"];
+  formularioRegistroAlumnos!: FormGroup;
   actionBtn: string = "Save";
 
   constructor(
@@ -25,58 +25,58 @@ export class DialogComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.productForm = this.fromBuilder.group({
-      productName: ['', Validators.required],
-      category: ['', Validators.required],
-      freshness: ['', Validators.required],
-      price: ['', Validators.required],
-      comment: ['', Validators.required],
-      date: ['', Validators.required]
+    this.formularioRegistroAlumnos = this.fromBuilder.group({
+      nombre: ['', Validators.required],
+      apellidoPaterno: ['', Validators.required],
+      apellidoMaterno: ['', Validators.required],
+      fechaNacimiento: ['', Validators.required],
+      genero: ['', Validators.required],
+      noContacto: ['', Validators.required]
     });
 
 
     if (this.editData) {
       this.actionBtn = "Update";
-      this.productForm.controls['productName'].setValue(this.editData.productName);
-      this.productForm.controls['category'].setValue(this.editData.category);
-      this.productForm.controls['freshness'].setValue(this.editData.freshness);
-      this.productForm.controls['price'].setValue(this.editData.price);
-      this.productForm.controls['comment'].setValue(this.editData.comment);
-      this.productForm.controls['date'].setValue(this.editData.date);
+      this.formularioRegistroAlumnos.controls['nombre'].setValue(this.editData.nombre);
+      this.formularioRegistroAlumnos.controls['apellidoPaterno'].setValue(this.editData.apellidoPaterno);
+      this.formularioRegistroAlumnos.controls['apellidoMaterno'].setValue(this.editData.apellidoMaterno);
+      this.formularioRegistroAlumnos.controls['fechaNacimiento'].setValue(this.editData.fechaNacimiento);
+      this.formularioRegistroAlumnos.controls['genero'].setValue(this.editData.genero);
+      this.formularioRegistroAlumnos.controls['noContacto'].setValue(this.editData.noContacto);
     }
 
   }
 
-  addProduct() {
+  addAlumno() {
     if (!this.editData) {
-      if (this.productForm.valid) {
-        this.api.postProduct(this.productForm.value)
+      if (this.formularioRegistroAlumnos.valid) {
+        this.api.postAlumno(this.formularioRegistroAlumnos.value)
           .subscribe({
             next: (res) => {
-              alert("Product added successfully");
-              this.productForm.reset();
+              alert("Quedaron registrados los datos del alumno");
+              this.formularioRegistroAlumnos.reset();
               this.dialogRef.close('save');
             },
             error: () => {
-              alert("Error while adding the product");
+              alert("Error al registrar los datos del alumno");
             }
           })
       };
     } else {
-      this.updateProduct()
+      this.updateAlumno()
     }
   }
 
-  updateProduct() {
-    this.api.putProduct(this.productForm.value, this.editData.id)
+  updateAlumno() {
+    this.api.putAlumno(this.formularioRegistroAlumnos.value, this.editData.id)
       .subscribe({
         next: (res) => {
-          alert("Product update Successfully");
-          this.productForm.reset();
+          alert("Se han actualizado los datos del alumno");
+          this.formularioRegistroAlumnos.reset();
           this.dialogRef.close('update');
         },
         error: () => {
-          alert("Error while updating the record!!");
+          alert("Error mientras se actualizaban los datos del alumno");
         }
       }
       )

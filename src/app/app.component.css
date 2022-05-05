@@ -8,34 +8,6 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-
-.container {
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 5px;
-}
-
-
 .example-spacer {
     flex: 1 1 auto;
-}
-
-
-table {
-    width: 100%;
-}
-
-mat-form-field{
-    width:100%;
-}
-
-.example-radio-group {
-    display: flex;
-    flex-direction: column;
-    margin: 15px 0;
-    align-items: flex-start;
-}
-
-.example-radio-button {
-    margin: 5px;
 }

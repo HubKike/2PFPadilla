@@ -1,10 +1,40 @@
 {
-  "productList": [],
-  "comments": [
+  "listaAlumnos": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "nombre": "Enrique",
+      "apellidoPaterno": "Padilla",
+      "apellidoMaterno": "Ruiz",
+      "fechaNacimiento": "1971-02-17T06:00:00.000Z",
+      "genero": "M",
+      "noContacto": "5256435299",
+      "id": 1
+    },
+    {
+      "nombre": "José",
+      "apellidoPaterno": "Quintero",
+      "apellidoMaterno": "Roriguez",
+      "fechaNacimiento": "1971-03-01T06:00:00.000Z",
+      "genero": "M",
+      "noContacto": "55 5555555",
+      "id": 2
+    }
+  ],
+  "listaCursos": [
+    {
+      "curso": "Angular",
+      "descripcion": "Framework para desarrollo de aplicaciones Web y móvil",
+      "nivel": "Avanzado",
+      "id": 1
+    }
+  ],
+  "listaProfesores": [
+    {
+      "nombre": "Hugo",
+      "apellidoPaterno": "cuac",
+      "apellidoMaterno": "cuac",
+      "genero": "M",
+      "noContacto": "23452345",
+      "id": 1
     }
   ],
   "profile": {

@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { DialogComponent } from './components/alumnos/dialog/dialog.component';
 import { ApiService } from './services/api.service';
+import { DialogCursosComponent } from './components/cursos/dialog-cursos/dialog-cursos.component';
+import { DialogoProfesoresComponent } from './components/profesores/dialogo-profesores/dialogo-profesores.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { ApiService } from './services/api.service';
     AlumnosComponent,
     ProfesoresComponent,
     CursosComponent,
-    DialogComponent
+    DialogComponent,
+    DialogCursosComponent,
+    DialogoProfesoresComponent
   ],
   imports: [
     BrowserModule,

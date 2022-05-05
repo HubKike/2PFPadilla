@@ -1,0 +1,38 @@
+<p>dialog-cursos works!</p>
+<p>dialog courses works!</p>
+
+<!-- <p>dialog works!</p> -->
+<h1 mat-dialog-title> Formulario de registro de cursos </h1>
+<div mat-dialog-content>
+    <!-- Modal de alumnos -->
+    <!-- productForm"> -->
+    <form [formGroup]="formularioRegistroCursos">
+
+        <!-- Ver form field en Angular Material -->
+        <mat-form-field appearance="outline">
+            <mat-label>Curso</mat-label>
+            <input formControlName="curso" matInput placeholder="Curso">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Descripción</mat-label>
+            <input formControlName="descripcion" matInput placeholder="Descripción">
+            <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+        
+        <mat-radio-group formControlName="nivel" aria-label="Seleccione" class="example-radio-group">
+            <mat-radio-button *ngFor="let nivel of listaNiveles" [value]="nivel" class="example-radio-button">{{nivel}}
+            </mat-radio-button>
+        </mat-radio-group>
+        
+        <!--  -->
+    </form>
+</div>
+
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left: 15px;" mat-raised-button color="primary" (click)="addCurso()">{{actionBtn}}</button>
+</div>

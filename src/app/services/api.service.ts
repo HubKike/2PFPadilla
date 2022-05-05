@@ -8,23 +8,67 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  rutaAlumnos: string = "http://localhost:3000/listaAlumnos/";
+  rutaCursos: string = "http://localhost:3000/listaCursos/";
+  rutaProfesores: string = "http://localhost:3000/listaProfesores/";
 
-  rutaProductos: string = "http://localhost:3000/productList";
-
-  postProduct(data: any){
-    return this.http.post<any>(this.rutaProductos, data);
-  }
-  
-  getProduct() {
-    return this.http.get<any>(this.rutaProductos)
+  //#region Alumnnos
+  postAlumno(data: any) {
+    return this.http.post<any>(this.rutaAlumnos, data);
   }
 
-  putProduct(data: any, id: number) {
-    return this.http.put<any>(this.rutaProductos + id, data)
+  getAlumno() {
+    return this.http.get<any>(this.rutaAlumnos)
   }
 
-  deleteProduct(id: number) {
-    return this.http.delete<any>(this.rutaProductos + id)
+  putAlumno(data: any, id: number) {
+    return this.http.put<any>(this.rutaAlumnos + id, data)
   }
+
+  deleteAlumno(id: number) {
+    console.log(id)
+    return this.http.delete<any>(this.rutaAlumnos + id)
+  }
+  //#endregion Alumnnos
+
+  //#region Cursos
+
+  postCurso(data: any) {
+    return this.http.post<any>(this.rutaCursos, data);
+  }
+
+  getCurso() {
+    return this.http.get<any>(this.rutaCursos)
+  }
+
+  putCurso(data: any, id: number) {
+    return this.http.put<any>(this.rutaCursos + id, data)
+  }
+
+  deleteCurso(id: number) {
+    console.log(id)
+    return this.http.delete<any>(this.rutaCursos + id)
+  }
+
+  //#endregion Cursos
+
+  //#region Profesores
+  postProfesor(data: any) {
+    return this.http.post<any>(this.rutaProfesores, data);
+  }
+
+  getProfesor() {
+    return this.http.get<any>(this.rutaProfesores)
+  }
+
+  putProfesor(data: any, id: number) {
+    return this.http.put<any>(this.rutaProfesores + id, data)
+  }
+
+  deleteProfesor(id: number) {
+    console.log(id)
+    return this.http.delete<any>(this.rutaProfesores + id)
+  }
+  //#endregion Profesores
 
 }

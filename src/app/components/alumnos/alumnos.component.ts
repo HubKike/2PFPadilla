@@ -1,14 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-//Angular Material
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 //Components
 import { DialogComponent } from './dialog/dialog.component';
 import { ApiService } from 'src/app/services/api.service';
 
-
 //Angular Material
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -20,18 +17,19 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class AlumnosComponent implements OnInit {
 
-  displayedColumns: string[] = ['productName', 'category', 'date', 'freshness', 'price', 'comment', 'action'];
+  /* displayedColumns: string[] = ['productName', 'category', 'date', 'freshness', 'price', 'comment', 'action']; */
+  displayedColumns: string[] = ['nombre', 'apellidoPaterno', 'apellidoMaterno', 'fechaNacimiento', 'genero', 'noContacto', 'action'];
 
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  dfr:any= ApiService
+  //dfr:any= ApiService
 
   constructor(private dialog: MatDialog, private api: ApiService) { }
 
   ngOnInit(): void {
-    this.getAllProducts();
+    this.getListaAlumnos();
   }
 
   openDialog() {
@@ -39,13 +37,13 @@ export class AlumnosComponent implements OnInit {
       width: '30%'
     }).afterClosed().subscribe(val => {
       if (val === 'save') {
-        this.getAllProducts();
+        this.getListaAlumnos();
       }
     })
   }
 
-  getAllProducts() {
-    this.api.getProduct()
+  getListaAlumnos() {
+    this.api.getAlumno()
       .subscribe({
         next: (res) => {
           this.dataSource = new MatTableDataSource(res);
@@ -58,23 +56,24 @@ export class AlumnosComponent implements OnInit {
       })
   }
 
-  editProduct(row: any) {
+  editAlumno(row: any) {
+    console.log(row);
     this.dialog.open(DialogComponent, {
       width: '30',
       data: row
     }).afterClosed().subscribe(val => {
       if (val === 'update') {
-        this.getAllProducts();
+        this.getListaAlumnos();
       }
     })
   }
 
-  deleteProduct(id: number) {
-    this.api.deleteProduct(id)
+  deleteAlumno(id: number) {
+    this.api.deleteAlumno(id)
       .subscribe({
         next: (res) => {
           alert("Product Deleted Successfully");
-          this.getAllProducts();
+          this.getListaAlumnos();
         },
         error: () => {
           alert("Error while deleting the product!!");
