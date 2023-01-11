@@ -1,0 +1,72 @@
+Vídeo: https://www.youtube.com/watch?v=fsL85nyjJRs
+
+
+ng new UserManagement
+
+cd UserManagement
+
+ng add @angular/material
+
+ejecutar el Schematic
+ng generate @angular/material:navigation root-nav --skip-tests
+
+En app.component.html cambiar el <router-outlet> por <app-root-nav>
+
+ng g c add-user --skip-tests
+
+ng g c view-user --skip-tests
+
+ng g c delete-user --skip-tests
+
+ng g c update-user --skip-tests
+
+ng g c home --skip-tests
+
+En root-nav.component.html agregar el ng-content para poder renderizar el contenido
+<!-- Add Content Here -->
+<ng-content></ng-content>
+<!---------------------->
+
+
+En app.component.html incluir el router-outlet
+<app-root-nav>
+  <router-outlet></router-outlet>
+</app-root-nav>
+
+Agregar los routerLink en el listado de navegación
+Ya, consultar el otro tutorial
+
+Agregar JSON-Service
+npm install -g json-server
+json-server --watch db.json
+
+Generar los servicios
+ng g s services/alumnos --skip-tests
+ng g s services/cursos --skip-tests
+ng g s services/personal --skip-tests
+
+
+Generar lo módulos
+ng g m modules/alumnos --routing
+ng g c modules/alumnos/alumnos --skip-tests --flat
+Generar el diálogo
+ng g c modules/alumnos/alumnos-dialogo --skip-tests
+
+ng g m modules/cursos --routing
+ng g c modules/cursos/cursos --skip-tests --flat
+Generar el diálogo
+ng g c modules/cursos/cursos-dialogo --skip-tests
+
+ng g m modules/personal --routing
+ng g c modules/personal/personal --skip-tests --flat
+Generar el diálogo
+ng g c modules/personal/personal-dialogo --skip-tests
+
+IMPLEMENTAR
+
+
+
+Var Schematics
+ver https://medium.com/@vperviz/create-an-angular-app-with-a-side-navigation-and-a-dashboard-in-5-minutes-with-schematics-300fc3b8e0a8
+https://www.coursera.org/projects/angular-schematics?irclickid=Uh4z4CUNLxyNWPr3oTVb3zeRUkAz6u2n7WslQ80&irgwc=1&utm_medium=partners&utm_source=impact&utm_campaign=259799&utm_content=b2c
+
